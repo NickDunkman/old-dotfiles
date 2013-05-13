@@ -7,16 +7,6 @@ alias ll='ls -lA | grep -v .DS_Store'
 # update macports, port tree, & installed packages
 alias update-macports='sudo port selfupdate && sudo port upgrade outdated'
 
-# is git branch dirty?
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
-}
-
-# get git branch name
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
-}
-
 # git completion - enables tab completion for git branch names
 source ~/.git-completion.sh
 
