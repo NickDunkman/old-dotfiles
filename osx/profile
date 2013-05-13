@@ -10,20 +10,8 @@ alias update-macports='sudo port selfupdate && sudo port upgrade outdated'
 # git completion - enables tab completion for git branch names
 source ~/.git-completion.sh
 
-# bash prompt
-function parse_git_dirty {
-	[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
-}
-function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/"
-}
-function parse_git_repo {
-	git config --get remote.origin.url | cut -f2 -d: | cut -f1 -d.
-}
-function prompt_git_info {
-	echo "$(parse_git_repo):$(parse_git_branch)$(parse_git_dirty)"
-}
-export PS1='\n\e[1;0m\e[40m [host] $(hostname) \e[0m \e[41;1m [user] \u \e[0;1m \e[46m [pwd] \w \]\e[0m \e[44m \D{%B %d, %Y - %OI:%M:%S %p} \e[0m \e[45m [git] $(prompt_git_info) \e[0m \e[0;32m\n\n\e[0m\e[0;33m '
+# custom bash prompt
+source ~/Projects/dotfiles/osx/bash_prompt
 
 # append local profile if it exists
 [ -f ~/.local_profile ] && source ~/.local_profile
