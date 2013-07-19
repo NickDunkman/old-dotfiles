@@ -1,4 +1,4 @@
-
+#!/bin/sh
 
 function bp_git_dirty {
 	[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
@@ -13,7 +13,7 @@ function bp_git_repo {
 }
 
 function bp_git_info {
-	[ -d .git ] || [ -f .git ] && echo " [git] $(bp_git_repo):$(bp_git_branch)$(bp_git_dirty) "
+	[[ $(git status 2> /dev/null) != "" ]] && echo " [git] $(bp_git_repo):$(bp_git_branch)$(bp_git_dirty) "
 }
 
-export PS1='\n\e[1;0m\e[44m [host] $(hostname) \e[0m \e[41;1m [user] \u \e[0;1m \e[46m [pwd] \w \]\e[0m \e[45m$(bp_git_info)\e[0m \e[0;32m\n\n\e[0m\e[0;33m '
+export PS1='\n\033[1;0m\033[44m [host] $(hostname) \033[0m \033[41;1m [user] \u \033[0;1m \033[46m [pwd] \w \]\033[0m \033[45m$(bp_git_info)\033[0m \033[0;32m\n\n\033[0m\033[0;33m '
