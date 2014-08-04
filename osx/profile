@@ -1,8 +1,6 @@
 #!/bin/sh
 
-export PATH=/opt/local/bin:/opt/local/sbin:~/Projects/dotfiles/bin:$PATH
-export JAVA_HOME=$(/usr/libexec/java_home)
-
+export PATH=/opt/local/bin:/opt/local/sbin:~/Code/NickDunkman/dotfiles/bin:$PATH
 
 # update macports, port tree, & installed packages
 alias update-macports='sudo port selfupdate && sudo port upgrade outdated'
@@ -13,10 +11,10 @@ alias ll='ls -lA | grep -v .DS_Store'
 alias gsu='git submodule update --init --recursive'
 
 # git completion - enables tab completion for git branch names
-source ~/.git-completion.sh
+source ~/Code/NickDunkman/dotfiles/git/git_completion.sh
 
 # custom bash prompt
-source ~/Projects/dotfiles/osx/bash_prompt
+source ~/Code/NickDunkman/dotfiles/osx/bash_prompt
 
 # append local profile if it exists
 [ -f ~/.local_profile ] && source ~/.local_profile
