@@ -1,0 +1,38 @@
+" ensure vim
+set nocompatible
+
+" change leader to comma
+let mapleader=","
+
+" appearance stuff
+"if has("gui_running")
+"  colorscheme nick " in the ~/.vim/colors directory
+"endif
+set guifont=Consolas:h14
+set cul " highlight the line the cursor is on
+set encoding=utf8
+
+" whitespace
+set nowrap
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set list listchars=trail:•,tab:▸\ ,eol:¬
+
+" Shows what you're typing as a command
+set showcmd
+
+let g:python_highlight_string_formatting = 1
+
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_auto_colors = 0
+
+let g:airline_powerline_fonts = 1
+
+" Ignore python defaults set by python-mode (e.g. use my custom colorcolumn=100)
+let g:pymode_options = 0
+let g:pymode_options_max_line_length = 99
+
+

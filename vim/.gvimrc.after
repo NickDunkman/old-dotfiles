@@ -1,0 +1,5 @@
+" Disable beeping
+set vb t_vb=
+set t_vb=
+
+set guifont=InconsolataForPowerline\ Nerd\ Font:h16

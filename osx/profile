@@ -6,15 +6,24 @@ export PATH=/opt/local/bin:/opt/local/sbin:~/Code/NickDunkman/dotfiles/bin:$PATH
 alias update-macports='sudo port selfupdate && sudo port upgrade outdated'
 
 # directory listing - show all files but ignore .DS_Store
-alias ll='ls -lA | grep -v .DS_Store'
+alias ll='ls -AFhlG | grep -v .DS_Store'
 
 alias gsu='git submodule update --init --recursive'
+
+git_pog() {
+    [[ $1 ]] && log_count=$1 || log_count=10
+    git log -n $log_count --pretty=format:"%C(bold cyan)%h%C(reset) · %C(bold red)%aN%C(reset) · %C(white)%ar%C(reset) · %s%C(bold green)%d%C(reset)" | sed 's/ · /∫/g' | column -t -s '∫'
+}
+alias gp=git_pog
 
 # git completion - enables tab completion for git branch names
 source ~/Code/NickDunkman/dotfiles/git/git_completion.sh
 
 # custom bash prompt
 source ~/Code/NickDunkman/dotfiles/osx/bash_prompt
+
+# ssh host tab completion
+complete -o default -o nospace -W "$(grep '^Host' $HOME/.ssh/config | grep -v '[?*]' | cut -d' ' -f2)" scp sftp ssh
 
 # append local profile if it exists
 [ -f ~/.local_profile ] && source ~/.local_profile
